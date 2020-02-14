@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const router = require("./routes/api");
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,7 +16,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false
 });
 
-// app.use("./routes/api.js");
+app.use(router);
 
 app.use("./routes/api.js", function(req, res, next) {
   console.log("whatever this is a test", req.method)
